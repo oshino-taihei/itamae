@@ -1,2 +1,3 @@
 os:
   hostname: "db1"
+  ip_address: "10.10.10.82"

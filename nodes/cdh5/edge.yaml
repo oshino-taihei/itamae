@@ -1,2 +1,3 @@
 os:
   hostname: "edge"
+  ip_address: "10.10.20.212"

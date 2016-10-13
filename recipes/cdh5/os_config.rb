@@ -28,7 +28,7 @@ end
 
 ### パスワードなしssh ###
 # /root/.ssh/authorized_keys配置
-remote_file "/root/.ssh/authorized_key" do
+remote_file "/root/.ssh/authorized_keys" do
   owner "root"
   group "root"
   mode "600"

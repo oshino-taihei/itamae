@@ -27,13 +27,15 @@ remote_file "/etc/cloud/cloud.cfg" do
 end
 
 ### SELinux無効化 ###
-# 変更後は手動でOS再起動
+# SELinuxが有効ならば無効化
+execute "[ $(getenforce) != Disabled ] && setenforce 0 || echo Nothing to do"
+
+# SELinux無効化設定永続化(変更後は手動でOS再起動)
 remote_file "/etc/selinux/config" do
   owner "root"
   group "root"
   source "remote_files/etc/selinux/config"
 end
-execute "setenforce 0"
 
 ### パスワードなしssh ###
 # /root/.ssh/authorized_keys配置

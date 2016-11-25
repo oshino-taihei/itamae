@@ -46,3 +46,11 @@ remote_file "/root/.ssh/authorized_keys" do
   source "remote_files/authorized_keys"
 end
 
+### カーネルパラメータ変更 ###
+remote_file "/etc/sysctl.conf" do
+  owner "root"
+  group "root"
+  source "remote_files/etc/sysctl.conf"
+end
+execute "sysctl -p"
+

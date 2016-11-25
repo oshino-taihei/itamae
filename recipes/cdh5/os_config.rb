@@ -54,3 +54,13 @@ remote_file "/etc/sysctl.conf" do
 end
 execute "sysctl -p"
 
+### Transparent Huge Page無効化 ###
+# 無効化処理を実行
+execute "echo never > /sys/kernel/mm/transparent_hugepage/enabled"
+# サーバ起動時に無効化処理を実行するinitファイルを配置
+remote_file "/etc/rc.local" do
+  owner "root"
+  group "root"
+  source "remote_files/etc/rc.local"
+end
+
